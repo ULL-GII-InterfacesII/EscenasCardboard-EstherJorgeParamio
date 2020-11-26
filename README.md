@@ -20,4 +20,44 @@ Realizando los pasos anteriores en orden, tendremos nuestro proyecto listo para 
 
 #### El jugador podrá recolectar cubos y cambiar de color las esferas. Inicialmente las esferas serán blancas y el nuevo color debe eligirlo entre 3 opciones en la UI.
 
-Para este punto, colocamos 
+Para este punto, inicialmente colocaremos un plano a forma de suelo y sobre él vamos añadirle varios cubos. Creamos, y asignamos a los cubos, un *script* llamado *pickUp.cs* y vamos a declarar un método que incremente un contador de cubos y destruimos el objeto recolectado. 
+
+```SQL
+public void recolect() {
+  countCubes++;
+  Destroy(gameObject);
+}
+```
+
+Desde la interfaz, añadimos al cubo el evento *pointerClick* para que cuando la retícula esté sobre el cubo y se haga *click*, este realice la función asignada del *script*, en este caso *recolect*.
+
+![eventoCubo](imgs/eventoCubo.png)
+
+Para realizar el otro punto, colocamos varias esferas en la escena y les asignamos un *script* al que llamamos *changeColor.cs*. En este, vamos a obtener la componente *Renderer* de cada objeto y declarar tres funciones que cambien la propiedad ```rd.material.color``` para asignar, según la función, el color querido.
+
+```SQL
+public void Red() {
+  rd.material.color = Color.red;
+}
+
+public void Blue() {
+  rd.material.color = Color.blue;
+}   
+
+public void Black() {
+  rd.material.color = Color.black;
+}
+```
+
+Por último, al igual que con el cubo, a cada función le asignamos un evento diferente con la retícula. En este caso, si la retícula entra, la esfera se cambia a color rojo; si esta sale, se cambia a color azul y si clicas se cambia a color negro.
+
+![eventoEsfera](imgs/eventoEsfera.png)
+
+### APK
+
+Para crear el *apk*, hacemos ```Build Settings > Build``` y nos la instalamos en el móvil. El resultado se vería tal que así.
+
+[![RV](imgs/portadaEscena.jpeg)](imgs/escenaFinal.mp4)
+
+
+
